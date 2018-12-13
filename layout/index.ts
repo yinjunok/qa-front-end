@@ -1,0 +1,1 @@
+export { default as IndexLayout } from './index-layout/IndexLayout';
