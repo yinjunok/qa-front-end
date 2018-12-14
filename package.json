@@ -11,6 +11,7 @@
   "dependencies": {
     "@material-ui/core": "^3.6.2",
     "@material-ui/icons": "^3.0.1",
+    "classnames": "^2.2.6",
     "mobx": "^5.8.0",
     "mobx-react": "^5.4.3",
     "next": "^7.0.2",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.2.1",
     "@babel/plugin-proposal-decorators": "^7.2.0",
+    "@types/classnames": "^2.2.6",
     "@types/next": "^7.0.5",
     "@types/react": "^16.7.17",
     "@types/react-dom": "^16.0.11",

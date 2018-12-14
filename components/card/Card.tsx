@@ -1,11 +1,16 @@
 import * as React from 'react';
-import css from './card.less';
+import CardHeader from './CardHeader';
+import CardSection from './CardSection';
+import * as css from './styles.less';
 
-interface ICardProps {
-  children: React.ReactNode;
+interface ICardProps extends React.SFC {
+  CardHeader: React.SFC;
+  CardSection: React.SFC;
 }
 
-const Card: React.SFC<ICardProps> = props => (<div className={css.card}>{props.children}</div>)
+const Card: ICardProps = props => (<div className={css.card}>{props.children}</div>)
 
+Card.CardHeader = CardHeader;
+Card.CardSection = CardSection;
 
 export default Card;

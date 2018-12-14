@@ -1,0 +1,40 @@
+.button {
+  display: inline-block;
+  padding: 0 16px;
+  font-size: 14px;
+  line-height: 32px;
+  color: #8590A6;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: 1px solid;
+  border-radius: 3px;
+  font-size: 14px;
+  transition: all .15s ease;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.primary {
+  color: #FFFFFF;
+  background-color: #0084FF;
+  border-color: #0084FF;
+
+  &:not(:disabled):hover {
+    border-color: hsl(208.94117647058823, 100%, 45%);
+    background-color: hsl(208.94117647058823, 100%, 45%);
+  }
+}
+
+.blue {
+  color: #0084FF;
+  border-color: #0084FF;
+}
+
+.grey {
+  color: #8590A6;
+  border-color: #8590A6;
+}

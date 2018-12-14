@@ -1,13 +1,16 @@
 import * as React from 'react';
 import Link from 'next/link';
-import * as css from './top-nav.less';
+import { Logo } from '../../components';
+import { SearchBox } from '../index'
+import * as css from './styles.less';
 
 class TopNav extends React.Component {
   render() {
     return (
       <header className={css.header}>
         <div className={css.inner}>
-          <nav>
+          <Logo />
+          <nav className={css.nav}>
             <Link href='/'>
               <a className={css.link}>首页</a>
             </Link>
@@ -18,6 +21,7 @@ class TopNav extends React.Component {
               <a className={css.link}>话题</a>
             </Link>
           </nav>
+          <SearchBox />
         </div>
       </header>
     )
