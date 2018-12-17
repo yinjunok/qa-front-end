@@ -5,3 +5,4 @@ export { default as Input } from './input/Input';
 export { default as List } from './list/List';
 export { default as Avatar } from './avatar/Avatar';
 export { default as Switch } from './switch/Switch';
+export { default as Select } from './select/Select';

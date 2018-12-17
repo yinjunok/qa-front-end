@@ -3,9 +3,20 @@ import Link from 'next/link';
 import NoSsr from '@material-ui/core/NoSsr';
 import ForumIcon from '@material-ui/icons/Forum';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
-import { Logo, Avatar, Switch } from '../../components';
+import { Logo, Avatar, Switch, Select } from '../../components';
 import { SearchBox } from '../index'
 import * as css from './styles.less';
+
+const data = [
+  {
+    value: 1,
+    label: '中文',
+  },
+  {
+    value: 2,
+    label: 'English',
+  }
+];
 
 class TopNav extends React.Component<WithStyles<typeof styles>> {
   state = {
@@ -39,6 +50,9 @@ class TopNav extends React.Component<WithStyles<typeof styles>> {
             </NoSsr>
             <div className={css.functionIcon}>
               <Switch checked={this.state.checked} onChange={this.changeHandler} />
+            </div>
+            <div className={css.functionIcon}>
+              <Select options={data} defaultValue={1} />
             </div>
             <Avatar />
           </div>
