@@ -1,9 +1,11 @@
 import * as React from 'react';
 import * as css from './styles.less';
 
-const CardHeader: React.SFC = props => (
-  <div className={css.CardHeader}>
-    {props.children}
+export type CardHeaderProps = React.SFC<React.HTMLAttributes<HTMLDivElement>>;
+
+const CardHeader: CardHeaderProps = ({ children, className, ...props}) => (
+  <div className={`${css.CardHeader} ${className}`} {...props}>
+    {children}
   </div>
 )
 

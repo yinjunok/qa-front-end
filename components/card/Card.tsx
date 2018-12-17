@@ -1,10 +1,10 @@
 import * as React from 'react';
-import CardHeader from './CardHeader';
+import CardHeader, { CardHeaderProps } from './CardHeader';
 import CardSection from './CardSection';
 import * as css from './styles.less';
 
 interface ICardProps extends React.SFC {
-  CardHeader: React.SFC;
+  CardHeader: CardHeaderProps;
   CardSection: React.SFC;
 }
 
