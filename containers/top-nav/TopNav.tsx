@@ -3,18 +3,22 @@ import Link from 'next/link';
 import NoSsr from '@material-ui/core/NoSsr';
 import ForumIcon from '@material-ui/icons/Forum';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
-import { Logo, Avatar } from '../../components';
+import { Logo, Avatar, Switch } from '../../components';
 import { SearchBox } from '../index'
 import * as css from './styles.less';
 
 class TopNav extends React.Component<WithStyles<typeof styles>> {
+  state = {
+    checked: true,
+  }
+
   render() {
     const { classes } = this.props;
 
     return (
       <header className={css.header}>
         <div className={css.inner}>
-          <div className={css.left}>
+          <div className={css.innerItem}>
             <Logo />
             <nav className={css.nav}>
               <Link href='/'>
@@ -29,15 +33,24 @@ class TopNav extends React.Component<WithStyles<typeof styles>> {
             </nav>
             <SearchBox />
           </div>
-          <div className={css.right}>
+          <div className={css.innerItem}>
             <NoSsr>
-              <ForumIcon className={classes.icon} />
+              <ForumIcon className={`${classes.icon} ${css.functionIcon}`} />
             </NoSsr>
+            <div className={css.functionIcon}>
+              <Switch checked={this.state.checked} onChange={this.changeHandler} />
+            </div>
             <Avatar />
           </div>
         </div>
       </header>
     )
+  }
+
+  private changeHandler = () => {
+    this.setState({
+      checked: !this.state.checked,
+    });
   }
 };
 

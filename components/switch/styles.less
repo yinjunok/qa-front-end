@@ -1,0 +1,60 @@
+.switch {
+  position: relative;
+  display: inline-flex;
+  width: 48px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.dot {
+  z-index: 99;
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  transition: all .15s ease;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+              0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+              0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+
+  &.close {
+    background: #fff;
+
+  }
+ 
+  &.open {
+    background: #1a1a1a;
+    transform: translate3d(28px, 0, 0);
+  }
+}
+
+.checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.checkboxBg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 38px;
+  height: 14px;
+  border-radius: 7px;
+  background: black;
+  transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, 
+              background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  opacity: .3;
+
+  &.open {
+    opacity: .5;
+  }
+}
