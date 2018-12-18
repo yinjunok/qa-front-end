@@ -2,7 +2,7 @@
 /*
   1. 降低函数调用频率
 */
-const debounce = (fn: Function, interval: number = 1000) => {
+const debounce = (fn: Function, interval: number = 50) => {
   let timer: number;
 
   return () => {
