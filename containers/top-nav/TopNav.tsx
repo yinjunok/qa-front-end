@@ -3,7 +3,9 @@ import Link from 'next/link';
 import NoSsr from '@material-ui/core/NoSsr';
 import ForumIcon from '@material-ui/icons/Forum';
 import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
+
 import { Logo, Avatar, Switch, Select } from '../../components';
+import { debounce } from '../../utils';
 import { SearchBox } from '../index'
 import * as css from './styles.less';
 
@@ -18,48 +20,95 @@ const data = [
   }
 ];
 
-class TopNav extends React.Component<WithStyles<typeof styles>> {
+interface ITopNavProps extends WithStyles<typeof styles> {
+  secondNav: React.ReactNode;
+}
+
+class TopNav extends React.Component<ITopNavProps, {}> {
+  static defaultProps = {
+    secondNav: null
+  }
+
   state = {
     checked: true,
-    selected: 1
+    selected: 1,
+    showSecondNav: false, // 是否向上滚动
+  }
+
+  componentDidMount() {
+    // 如果有第二导航
+    if (this.props.secondNav !== null) {
+      this.preScrollTop = document.documentElement.scrollTop;
+      window.addEventListener('scroll', debounce(this.scrollHandler));
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.scrollHandler)
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, secondNav } = this.props;
+    const { showSecondNav } = this.state;
 
     return (
       <header className={css.header}>
-        <div className={css.inner}>
-          <div className={css.innerItem}>
-            <Logo />
-            <nav className={css.nav}>
-              <Link href='/'>
-                <a className={css.link}>首页</a>
-              </Link>
-              <Link href='/explore'>
-                <a className={css.link}>发现</a>
-              </Link>
-              <Link href='/topic'>
-                <a className={css.link}>话题</a>
-              </Link>
-            </nav>
-            <SearchBox />
-          </div>
-          <div className={css.innerItem}>
-            <NoSsr>
-              <ForumIcon className={`${classes.icon} ${css.functionIcon}`} />
-            </NoSsr>
-            <div className={css.functionIcon}>
-              <Switch checked={this.state.checked} onChange={this.changeHandler} />
+        <div className={`${css.scrollPanel} ${showSecondNav ? css.showSecondNav : ''}`}>
+          <div className={css.inner}>
+            <div className={css.innerItem}>
+              <Logo />
+              <nav className={css.nav}>
+                <Link href='/'>
+                  <a className={css.link}>首页</a>
+                </Link>
+                <Link href='/explore'>
+                  <a className={css.link}>发现</a>
+                </Link>
+                <Link href='/topic'>
+                  <a className={css.link}>话题</a>
+                </Link>
+              </nav>
+              <SearchBox />
             </div>
-            <div className={css.functionIcon}>
-              <Select options={data} value={this.state.selected} onChange={(val) => { console.log(val); this.setState({selected: val}) }} />
+            <div className={css.innerItem}>
+              <NoSsr>
+                <ForumIcon className={`${classes.icon} ${css.functionIcon}`} />
+              </NoSsr>
+              <div className={css.functionIcon}>
+                <Switch checked={this.state.checked} onChange={this.changeHandler} />
+              </div>
+              <div className={css.functionIcon}>
+                <Select options={data} value={this.state.selected} onChange={(val) => { console.log(val); this.setState({selected: val}) }} />
+              </div>
+              <Avatar />
             </div>
-            <Avatar />
           </div>
+          {
+            secondNav !== null &&
+            <div className={css.inner}>
+              {secondNav}
+            </div>
+          }
         </div>
       </header>
     )
+  }
+
+  private preScrollTop: number = 0;
+  private scrollHandler = () => {
+    const curScrollTop = document.documentElement.scrollTop;
+
+    // 当前高度比之前高, 那么是向下滚动, 展示第二导航
+    if (curScrollTop > this.preScrollTop) {
+      this.setState({
+        showSecondNav: true
+      });
+    } else {
+      this.setState({
+        showSecondNav: false
+      });
+    }
+    this.preScrollTop = curScrollTop;
   }
 
   private changeHandler = () => {
