@@ -6,12 +6,20 @@ interface IAvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   src?: string;
 }
 
-const Avatar: React.SFC<IAvatarProps> = ({ children,  className, style, ...props }) => {
+const Avatar: React.SFC<IAvatarProps> = ({
+  src,
+  size,
+  style,
+  radius,
+  children,
+  className,
+  ...props
+}) => {
   const sty = {
-    width: props.size,
-    height: props.size,
-    borderRadius: `${props.radius}%`,
-    background: `url(${props.src}) center / contain no-repeat`,
+    width: size,
+    height: size,
+    borderRadius: `${radius}%`,
+    background: `url(${src}) center / contain no-repeat`,
   }
   
   return (
@@ -28,7 +36,7 @@ const Avatar: React.SFC<IAvatarProps> = ({ children,  className, style, ...props
 Avatar.defaultProps = {
   size: 30,
   radius: 50,
-  src: 'https://pic1.zhimg.com/da8e974dc_xl.jpg',
+  src: '/static/components/avatar/default-avatar.jpg',
 }
 
 export default Avatar;

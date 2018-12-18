@@ -1,13 +1,38 @@
 .select {
   transition: all .15s ease;
-  height: 24px;
+  height: 30px;
+  width: 65px;
+  // padding: 0 10px;
+  user-select: none;
 }
 
 .selected {
   display: inline-flex;
   align-items: center;
-  
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  width: 100%;
+
   &:active {
     background: #eee;
+  }
+}
+
+.option {
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  text-align: center;
+  transition: all .15s ease;
+}
+
+.checked {
+  background: #fafafa;
+  color: #999;
+  cursor: not-allowed;
+  
+  &:hover {
+    background: #fafafa;
   }
 }

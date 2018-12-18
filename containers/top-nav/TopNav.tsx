@@ -21,6 +21,7 @@ const data = [
 class TopNav extends React.Component<WithStyles<typeof styles>> {
   state = {
     checked: true,
+    selected: 1
   }
 
   render() {
@@ -52,7 +53,7 @@ class TopNav extends React.Component<WithStyles<typeof styles>> {
               <Switch checked={this.state.checked} onChange={this.changeHandler} />
             </div>
             <div className={css.functionIcon}>
-              <Select options={data} defaultValue={1} />
+              <Select options={data} value={this.state.selected} onChange={(val) => { console.log(val); this.setState({selected: val}) }} />
             </div>
             <Avatar />
           </div>

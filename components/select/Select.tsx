@@ -1,11 +1,12 @@
 import * as React from 'react';
 import List from '../list/List';
+import Card from '../card/Card';
 import * as css from './styles.less';
 
 interface ISelectProps {
-  onChange?: () => void;
+  onChange?: (val: number | string) => void;
   options?: IOption[];
-  defaultValue?: string | number;
+  value: number | string;
 }
 
 interface IOption {
@@ -17,41 +18,76 @@ export default class Select extends React.Component<ISelectProps, {}> {
   static defaultProps = {
     onChange: () => {},
     options: [],
-    defaultValue: null,
+    value: null,
+  }
+
+  private selectEle = React.createRef<HTMLDivElement>();
+  state = {
+    showOptions: false,
   }
 
   render() {
-    const { options } = this.props;
+    const { options, value } = this.props;
+    const { showOptions } = this.state;
+
     return (
-      <div className={css.select}>
-        <span className={css.selected}>
-          {
-            this.getSelected
-          }
-        </span>
-        <div>
-          {
-            (options as IOption[]).map((option: IOption) => (
-              <List key={option.value}>{option.label ? option.label : option.value}</List>)
-            )
-          }
-        </div>
+      <div className={css.select} ref={this.selectEle}>
+        <List className={css.option} onClick={this.toggleOptions}>
+          <p className={css.selected}>
+            {
+              this.getSelected
+            }
+          </p>
+        </List>
+        {
+          showOptions && 
+            <Card>
+              {
+                (options as IOption[]).map((option: IOption) => (
+                  <List
+                    key={option.value}
+                    onClick={() => this.selectHandler(option.value)}
+                    className={`${css.option} ${value === option.value ? css.checked : ''}`}
+                  >
+                    {option.label ? option.label : option.value}
+                  </List>)
+                )
+              }
+            </Card>
+        }
       </div>
     );
   }
 
   private get getSelected() {
-    const { options, defaultValue } = this.props;
+    const { options, value } = this.props;
 
-    if (defaultValue === null) {
+    if (value === null) {
       return null;
     }
 
-    let selected = (options as IOption[]).filter((option: IOption) => option.value === defaultValue);
+    let selected = (options as IOption[]).filter((option: IOption) => option.value === value);
     if (selected.length === 0) {
-      return defaultValue;
+      return value;
     } else {
       return selected[0].label;
     }
+  }
+
+  private toggleOptions = () => {
+    this.setState({
+      showOptions: !this.state.showOptions
+    });
+  }
+
+  private selectHandler = (val: number | string) => {
+    const { onChange, value } = this.props;
+    if (val === value) {
+      return;
+    }
+    if (onChange) {
+      onChange(val);
+    }
+    this.toggleOptions();
   }
 }
