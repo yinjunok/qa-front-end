@@ -33,6 +33,7 @@
     "fork-ts-checker-webpack-plugin": "^0.5.1",
     "less": "^3.9.0",
     "postcss-loader": "^3.0.0",
-    "typescript": "^3.2.2"
+    "typescript": "^3.2.2",
+    "url-loader": "^1.1.2"
   }
 }

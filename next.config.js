@@ -11,6 +11,19 @@ module.exports = withTypescript(withLess({
   webpack(config, options) {
     if (options.isServer) config.plugins.push(new ForkTsCheckerWebpackPlugin());
     
+    config.module.rules.push(
+      {
+        test: /\.(jpe?g|png)$/,
+        use: [
+            {
+              loader: "url-loader",
+              options: {
+                limit: 8192
+              }
+            }
+          ]
+        }
+      );
     return config
   },
 }));

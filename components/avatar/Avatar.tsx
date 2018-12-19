@@ -1,4 +1,5 @@
 import * as React from 'react';
+import defaultAvatar from './asset/default-avatar.jpg';
 
 interface IAvatarProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: number;
@@ -36,7 +37,9 @@ const Avatar: React.SFC<IAvatarProps> = ({
 Avatar.defaultProps = {
   size: 30,
   radius: 50,
-  src: '/static/components/avatar/default-avatar.jpg',
+  src: defaultAvatar,
+  style: {},
+  className: '',
 }
 
 export default Avatar;
