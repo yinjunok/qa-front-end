@@ -1,7 +1,7 @@
 import * as React from 'react';
 import List from '../list/List';
 import Card from '../card/Card';
-import RenderOuter from '../render-outer/renderOuter';
+import RenderOuter from '../render-outer/RenderOuter';
 import * as css from './styles.less';
 import { debounce } from '../../utils';
 
@@ -33,7 +33,7 @@ export default class Select extends React.Component<ISelectProps, {}> {
   }
 
   componentDidMount() {
-    window.addEventListener('resize', debounce(this.resizeHandler, 100));
+    window.addEventListener('resize', this.resizeHandler);
   }
 
   componentWillUnmount() {
@@ -75,7 +75,7 @@ export default class Select extends React.Component<ISelectProps, {}> {
     );
   }
 
-  private resizeHandler = () => {
+  private resizeHandler = debounce(() => {
     const { left, top } = this.getPanelPos();
 
     this.setState({
@@ -84,7 +84,7 @@ export default class Select extends React.Component<ISelectProps, {}> {
         top,
       }
     });
-  }
+  }, 100)
 
   private getPanelPos = () => {
     const parent = this.selectEle.current;

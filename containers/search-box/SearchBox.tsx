@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { MdSearch } from "react-icons/md";
-// import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
-import { Input, Button, Card, List } from '../../components';
+import { Input, Button, Card, List, RenderOuter } from '../../components';
 import * as css from './styles.less';
+import { debounce} from '../../utils';
 
 interface ISearchBoxProps {
   showHistoryHint?: boolean;
@@ -11,6 +11,10 @@ interface ISearchBoxProps {
 
 interface ISearchBoxState {
   showHistory: boolean;
+  historyPos: {
+    left: number;
+    top: number;
+  }
 }
 
 const { CardHeader } = Card;
@@ -32,6 +36,10 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
   private inputElement = React.createRef<Input>();
   state = {
     showHistory: false,
+    historyPos: {
+      left: 0,
+      top: 0,
+    }
   }
 
   componentDidMount() {
@@ -41,10 +49,15 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
         e.stopImmediatePropagation();
       });
     }
+    window.addEventListener('resize', this.resizeHandler)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resizeHandler);
   }
 
   render() {
-    const { showHistory } = this.state;
+    const { showHistory, historyPos } = this.state;
 
     return (
       <div className={css.searchWrapper}>
@@ -52,27 +65,25 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
           <Input
             ref={this.inputElement}
             onFocus={this.showHistoryHandler}
-            onClickCapture={(e: any) => {
-              console.log(e.nativeEvent.type);
-              e.stopPropagation();
-            }}
             placeholder='搜索感兴趣的内容...'
             rightIcon={
               <MdSearch size={24} className={css.searchIcon} />
             }
           />
           {
-            showHistory
-              && <div className={css.history}>
-                  <Card>
-                    <CardHeader className={css.searchHint}>历史记录</CardHeader>
-                    <div>
-                      <List><a target="__blank" href='https://www.baidu.com'>Baidu</a></List>
-                      <List>2</List>
-                      <List>3</List>
-                    </div>
-                  </Card>
-                </div>
+            showHistory &&
+              <RenderOuter>
+                <div className={css.history} style={{ top: historyPos.top, left: historyPos.left }}>
+                    <Card>
+                      <CardHeader className={css.searchHint}>历史记录</CardHeader>
+                      <div>
+                        <List><a target="__blank" href='https://www.baidu.com'>Baidu</a></List>
+                        <List>2</List>
+                        <List>3</List>
+                      </div>
+                    </Card>
+                  </div>
+              </RenderOuter>
           }
         </div>
         <Button>提问</Button>
@@ -80,9 +91,34 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
     );
   }
 
-  private showHistoryHandler = () => {
+  private getInputPos = () => {
+    const node = ReactDOM.findDOMNode(this.inputElement.current as Input);
+    const rect = (node as HTMLDivElement).getBoundingClientRect();
+    return {
+      left: rect.left,
+      top: rect.top + rect.height + 10
+    }
+  }
+
+  private resizeHandler = debounce(() => {
+    const { left, top } = this.getInputPos();
     this.setState({
-      showHistory: true
+      historyPos: {
+        left,
+        top,
+      }
+    })
+  }, 100)
+
+  private showHistoryHandler = () => {
+    const { left, top } = this.getInputPos();
+
+    this.setState({
+      showHistory: true,
+      historyPos: {
+        left,
+        top,
+      }
     });
     document.documentElement.addEventListener('click', this.hiddenHistoryHandler);
   }

@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { TopNav } from '../../containers';
+import SecondNav from './SecondNav';
 
 class IndexLayout extends React.Component {
   render() {
     return (
       <div>
-        <TopNav secondNav={<p style={{ color: 'red' }}>第二导航</p>} />
+        <TopNav secondNav={<SecondNav />} />
       </div>
     )
   }

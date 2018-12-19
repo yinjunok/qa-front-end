@@ -6,3 +6,4 @@ export { default as List } from './list/List';
 export { default as Avatar } from './avatar/Avatar';
 export { default as Switch } from './switch/Switch';
 export { default as Select } from './select/Select';
+export { default as RenderOuter } from './render-outer/RenderOuter';
