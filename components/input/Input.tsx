@@ -26,9 +26,10 @@ export default class SearchBox extends React.Component<ISearchBox, {}> {
       onBlur,
       ...props
     } = this.props;
+    const { isFocus } = this.state;
 
     return (
-      <div className={css.inputWrapper}>
+      <div className={`${css.inputWrapper} ${isFocus && css.inputActive}`}>
         <input
           className={css.input}
           onFocus={(e: React.FocusEvent<HTMLInputElement>) => this.toggleFocusHandler(e)}

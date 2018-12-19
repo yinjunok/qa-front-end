@@ -1,0 +1,27 @@
+
+.tab {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  padding: 0 20px;
+  font-size: 16px;
+  text-align: center;
+
+  a {
+    position: relative;
+    padding: 15px 0;
+    color: #444444;
+
+    &.active::after {
+      position: absolute;
+      right: 0;
+      bottom: -1px;
+      left: 0;
+      height: 3px;
+      background: #0084FF;
+      content: '';
+    }
+  }
+}
