@@ -1,7 +1,9 @@
 import * as React from 'react';
 import List from '../list/List';
 import Card from '../card/Card';
+import RenderOuter from '../render-outer/renderOuter';
 import * as css from './styles.less';
+import { debounce } from '../../utils';
 
 interface ISelectProps {
   onChange?: (val: number | string) => void;
@@ -24,11 +26,23 @@ export default class Select extends React.Component<ISelectProps, {}> {
   private selectEle = React.createRef<HTMLDivElement>();
   state = {
     showOptions: false,
+    optionsPanel: {
+      top: 0,
+      left: 0,
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', debounce(this.resizeHandler, 100));
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resizeHandler);
   }
 
   render() {
     const { options, value } = this.props;
-    const { showOptions } = this.state;
+    const { showOptions, optionsPanel } = this.state;
 
     return (
       <div className={css.select} ref={this.selectEle}>
@@ -41,22 +55,45 @@ export default class Select extends React.Component<ISelectProps, {}> {
         </List>
         {
           showOptions && 
-            <Card>
-              {
-                (options as IOption[]).map((option: IOption) => (
-                  <List
-                    key={option.value}
-                    onClick={() => this.selectHandler(option.value)}
-                    className={`${css.option} ${value === option.value ? css.checked : ''}`}
-                  >
-                    {option.label ? option.label : option.value}
-                  </List>)
-                )
-              }
-            </Card>
+            <RenderOuter>
+              <Card className={css.optionsPanel} style={{ left: optionsPanel.left, top: optionsPanel.top }}>
+                {
+                  (options as IOption[]).map((option: IOption) => (
+                    <List
+                      key={option.value}
+                      onClick={() => this.selectHandler(option.value)}
+                      className={`${css.option} ${value === option.value ? css.checked : ''}`}
+                    >
+                      {option.label ? option.label : option.value}
+                    </List>)
+                  )
+                }
+              </Card>
+            </RenderOuter>
         }
       </div>
     );
+  }
+
+  private resizeHandler = () => {
+    const { left, top } = this.getPanelPos();
+
+    this.setState({
+      optionsPanel: {
+        left,
+        top,
+      }
+    });
+  }
+
+  private getPanelPos = () => {
+    const parent = this.selectEle.current;
+
+    const rect = (parent as HTMLDivElement).getBoundingClientRect();
+    return {
+      left: rect.left,
+      top: rect.top + 35,
+    }
   }
 
   private get getSelected() {
@@ -75,7 +112,13 @@ export default class Select extends React.Component<ISelectProps, {}> {
   }
 
   private toggleOptions = () => {
+    const { left, top } = this.getPanelPos();
+
     this.setState({
+      optionsPanel: {
+        left,
+        top
+      },
       showOptions: !this.state.showOptions
     });
   }

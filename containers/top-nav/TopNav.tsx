@@ -37,7 +37,7 @@ class TopNav extends React.Component<ITopNavProps, {}> {
     // 如果有第二导航
     if (this.props.secondNav !== null) {
       this.preScrollTop = document.documentElement.scrollTop;
-      window.addEventListener('scroll', debounce(this.scrollHandler));
+      window.addEventListener('scroll', debounce(this.scrollHandler, 100));
     }
   }
 
@@ -74,7 +74,7 @@ class TopNav extends React.Component<ITopNavProps, {}> {
                 <Switch checked={this.state.checked} onChange={this.changeHandler} />
               </div>
               <div className={css.functionIcon}>
-                <Select options={data} value={this.state.selected} onChange={(val) => { console.log(val); this.setState({selected: val}) }} />
+                <Select options={data} value={this.state.selected} onChange={(val) => { this.setState({selected: val}) }} />
               </div>
               <Avatar />
             </div>

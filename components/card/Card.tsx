@@ -20,4 +20,8 @@ const Card: ICardProps = ({ className, children, ...props }) => (
 Card.CardHeader = CardHeader;
 Card.CardSection = CardSection;
 
+Card.defaultProps = {
+  className: '',
+}
+
 export default Card;
