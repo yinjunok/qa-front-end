@@ -14,9 +14,37 @@ class IndexLayout extends React.Component {
           <div className={css.content}></div>
           <div className={css.sidebar}>
             <Card>
-              <MdDescription />
-              <MdEdit />
-              <MdRecordVoiceOver />
+              <div className={css.iconPanel}>
+                <a className={css.iconBlock}>
+                  <MdDescription size={16} className={css.icon} />
+                  <span>写回答</span>
+                </a>
+                <a className={css.iconBlock}>
+                  <MdEdit size={16} className={css.icon} />
+                  <span>写文章</span>
+                </a>
+                <a className={css.iconBlock}>
+                  <MdRecordVoiceOver size={16} className={css.icon} />
+                  <span>写想法</span>
+                </a>
+              </div>
+            </Card>
+
+            <Card>
+              <div className={css.iconPanel}>
+                <a className={css.iconBlock}>
+                  <MdDescription size={16} className={css.icon} />
+                  <span>写回答</span>
+                </a>
+                <a className={css.iconBlock}>
+                  <MdEdit size={16} className={css.icon} />
+                  <span>写文章</span>
+                </a>
+                <a className={css.iconBlock}>
+                  <MdRecordVoiceOver size={16} className={css.icon} />
+                  <span>写想法</span>
+                </a>
+              </div>
             </Card>
           </div>
         </main>

@@ -10,6 +10,8 @@
   align-items: center;
 }
 
+/********************************************/
+
 .main {
   display: flex;
   justify-content: space-between;
@@ -20,11 +22,34 @@
 .content {
   width: 694px;
   flex: 0 0 694px;
-  height: 100px;
 }
 
 .sidebar {
   width: 296px;
   flex: 0 0 296px;
-  height: 300px;
+}
+
+.iconPanel {
+  display: flex;
+  justify-content: space-between;
+}
+
+.iconBlock {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  margin: 25px;
+  cursor: pointer;
+  color: #444444;
+  font-size: 16px;
+
+  span {
+    color: #444444;
+  }
+}
+
+.icon {
+  color: #8590A6;
+  margin-bottom: 6px;
 }
