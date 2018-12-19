@@ -1,8 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
-import NoSsr from '@material-ui/core/NoSsr';
-import ForumIcon from '@material-ui/icons/Forum';
-import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
+import { MdForum } from "react-icons/md";
 
 import { Logo, Avatar, Switch, Select } from '../../components';
 import { debounce } from '../../utils';
@@ -20,7 +18,7 @@ const data = [
   }
 ];
 
-interface ITopNavProps extends WithStyles<typeof styles> {
+interface ITopNavProps {
   secondNav: React.ReactNode;
 }
 
@@ -48,7 +46,7 @@ class TopNav extends React.Component<ITopNavProps, {}> {
   }
 
   render() {
-    const { classes, secondNav } = this.props;
+    const { secondNav } = this.props;
     const { showSecondNav } = this.state;
 
     return (
@@ -71,9 +69,7 @@ class TopNav extends React.Component<ITopNavProps, {}> {
               <SearchBox />
             </div>
             <div className={css.innerItem}>
-              <NoSsr>
-                <ForumIcon className={`${classes.icon} ${css.functionIcon}`} />
-              </NoSsr>
+              <MdForum size={24} className={`${css.forumIcon} ${css.functionIcon}`} />
               <div className={css.functionIcon}>
                 <Switch checked={this.state.checked} onChange={this.changeHandler} />
               </div>
@@ -118,11 +114,4 @@ class TopNav extends React.Component<ITopNavProps, {}> {
   }
 };
 
-const styles = () => ({
-  icon: {
-    color: '#8590A6',
-    cursor: 'pointer',
-  },
-});
-
-export default withStyles(styles)(TopNav)
+export default TopNav;

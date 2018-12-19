@@ -1,12 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import SearchIcon from '@material-ui/icons/Search';
-import NoSsr from '@material-ui/core/NoSsr';
-import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
+import { MdSearch } from "react-icons/md";
+// import withStyles, { WithStyles } from '@material-ui/core/styles/withStyles';
 import { Input, Button, Card, List } from '../../components';
 import * as css from './styles.less';
 
-interface ISearchBoxProps extends WithStyles<typeof styles> {
+interface ISearchBoxProps {
   showHistoryHint?: boolean;
 }
 
@@ -45,7 +44,6 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
   }
 
   render() {
-    const { classes } = this.props;
     const { showHistory } = this.state;
 
     return (
@@ -60,9 +58,7 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
             }}
             placeholder='搜索感兴趣的内容...'
             rightIcon={
-              <NoSsr>
-                <SearchIcon className={classes.icon} />
-              </NoSsr>
+              <MdSearch size={24} className={css.searchIcon} />
             }
           />
           {
@@ -100,11 +96,4 @@ class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState> {
   }
 }
 
-const styles = () => ({
-  icon: {
-    color: '#8590A6',
-    cursor: 'pointer',
-  },
-});
-
-export default withStyles(styles)(SearchBox)
+export default SearchBox;
