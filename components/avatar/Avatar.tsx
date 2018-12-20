@@ -1,7 +1,7 @@
 import * as React from 'react';
 import defaultAvatar from './asset/default-avatar.jpg';
 
-interface IAvatarProps extends React.HTMLAttributes<HTMLDivElement> {
+interface IAvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
   size?: number;
   radius?: number;
   src?: string;
@@ -17,26 +17,27 @@ const Avatar: React.SFC<IAvatarProps> = ({
   ...props
 }) => {
   const sty = {
+    display: 'inline-block',
     width: size,
     height: size,
-    borderRadius: `${radius}%`,
+    borderRadius: `${radius}px`,
     background: `url(${src}) center / contain no-repeat`,
   }
   
   return (
-    <div
+    <span
       className={`${className}`}
       style={{ ...style, ...sty }}
       {...props}
     >
       {children}
-    </div>
+    </span>
   );
 }
 
 Avatar.defaultProps = {
   size: 30,
-  radius: 50,
+  radius: 30,
   src: defaultAvatar,
   style: {},
   className: '',

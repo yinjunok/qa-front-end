@@ -4,7 +4,7 @@ import { withRouter, WithRouterProps, SingletonRouter } from 'next/router'
 import * as css from './styles.less';
 
 interface ITabLinkProps extends WithRouterProps {
-  links?: ILink[];
+  links: ILink[];
 }
 
 interface ILink {
@@ -26,8 +26,8 @@ class TabLink extends React.Component<ITabLinkProps> {
         {
           (links as ILink[]).map((l: ILink) => (
             <li key={l.href} className={css.link}>
-              <Link href={l.name}>
-                <a className={`${(router as SingletonRouter).pathname === l.href && css.active }`}>{l.name}</a>
+              <Link href={l.href}>
+                <a className={`${(router as SingletonRouter).pathname === l.href ? css.active : '' }`}>{l.name}</a>
               </Link>
             </li>
           ))

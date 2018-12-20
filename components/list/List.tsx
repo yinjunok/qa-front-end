@@ -12,4 +12,9 @@ const List: React.SFC<React.HtmlHTMLAttributes<HTMLDivElement>> = ({ children, c
   );
 }
 
+List.defaultProps = {
+  className: '',
+  children: null,
+}
+
 export default List;

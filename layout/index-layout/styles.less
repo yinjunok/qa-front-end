@@ -15,6 +15,7 @@
 .main {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   width: 1000px;
   margin: 62px auto 0;
 }
@@ -22,6 +23,7 @@
 .content {
   width: 694px;
   flex: 0 0 694px;
+  background: #fff;
 }
 
 .sidebar {
@@ -46,10 +48,41 @@
 
   span {
     color: #444444;
+    margin-top: 10px;
   }
 }
 
 .icon {
   color: #8590A6;
-  margin-bottom: 6px;
+}
+
+.noticeName {
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+}
+
+.noticeItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #8590A6;
+
+  .icon {
+    margin-right: 10px;
+  }
+
+  &:hover .noticeAmount {
+    background: #fff;
+  }
+}
+
+.noticeAmount {
+  padding: 6px 10px;
+  border-radius: 2px;
+  background: #F6F6F6;
+  color: #8590A6;
+  font-size: 12px;
+  border-radius: 2px;
+  transition: all .15s ease;
 }

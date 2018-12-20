@@ -8,10 +8,10 @@ const links = [
     href: '/',
     name: '推荐'
   }, {
-    href: '/follow',
+    href: '/index/follow',
     name: '关注'
   }, {
-    href: '/hot',
+    href: '/index/hot',
     name: '热点'
   }
 ];
