@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MdEdit, MdDescription, MdRecordVoiceOver } from "react-icons/md";
-import { Card } from '../../components';
+import { Card, List } from '../../components';
 import { TopNav } from '../../containers';
 import SecondNav from './SecondNav';
 import * as css from './styles.less';
@@ -31,20 +31,9 @@ class IndexLayout extends React.Component {
             </Card>
 
             <Card>
-              <div className={css.iconPanel}>
-                <a className={css.iconBlock}>
-                  <MdDescription size={16} className={css.icon} />
-                  <span>写回答</span>
-                </a>
-                <a className={css.iconBlock}>
-                  <MdEdit size={16} className={css.icon} />
-                  <span>写文章</span>
-                </a>
-                <a className={css.iconBlock}>
-                  <MdRecordVoiceOver size={16} className={css.icon} />
-                  <span>写想法</span>
-                </a>
-              </div>
+              <List>我的收藏</List>
+              <List>我关注的问题</List>
+              <List>我的邀请</List>
             </Card>
           </div>
         </main>
