@@ -16,6 +16,7 @@ class ProfileCard extends React.Component {
         <div className={css.userData}>
           <div className={css.avatar}>
             <Avatar size={160} radius={8} />
+            <div className={css.editAvatar}></div>
           </div>
         </div>
       </Card>
