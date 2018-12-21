@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import * as css from './styles.less';
 
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  type?: 'primary' | 'blue' | 'grey';
+  type?: 'primary' | 'blue' | 'grey' | 'vote';
 }
 
 const Button: React.SFC<IButtonProps> = ({children, className, type, ...props}) => {

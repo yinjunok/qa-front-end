@@ -42,15 +42,85 @@
 }
 
 .content {
+  display: none;
   font-size: 15px;
   line-height: 24px;
   color: #1a1a1a;
+}
+
+.releaseTime {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #8590A6;
+}
+
+.feedSource {
+  display: flex;
+  align-items: center;
+  color: #8590A6;
+  margin-bottom: 8px;
+}
+
+.miniContent {
+  cursor: pointer;
+
+  &:hover {
+    color: #646464;
+  }
+}
+
+.seeAll {
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #175199;
+  font-size: 14px;
+
+  &:hover {
+    color: #808080;
+  }
 }
 
 /************************************/
 
 .actionBar {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   box-sizing: border-box;
   padding: 10px 0 6px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.voteGroup {
+  display: flex;
+}
+
+.vote {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.agreeAmount {
+  margin-left: 5px;
+}
+
+.operating {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+  color: #8590A6;
+  cursor: pointer;
+}
+
+.operatingIcon {
+  margin-right: 5px;
 }
