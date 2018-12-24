@@ -17,6 +17,7 @@
 }
 
 .userData {
+  display: flex;
   position: relative;
   margin: 0 20px 24px;
   z-index: 99;
@@ -30,6 +31,14 @@
   overflow: hidden;
   margin-top: -84px;
   z-index: 99;
+  cursor: pointer;
+
+  &:hover .editAvatar {
+    background: rgba(0, 0, 0, .4);
+  }
+  &:hover .editIcon {
+    opacity: 1;
+  }
 }
 
 .editAvatar {
@@ -38,5 +47,43 @@
   left: 0;
   right: 0;
   bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0);
+  transition: all .3s ease;
+}
 
+.editIcon {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all .3s ease;
+  color: #fff;
+  user-select: none;
+}
+
+.userText {
+  padding-top: 16px;
+  padding-left: 32px;
+}
+
+.username {
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 30px;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-size: 18px;
+  white-space: nowrap;
+}
+
+.buttonGroup {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
