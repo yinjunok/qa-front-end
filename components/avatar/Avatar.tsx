@@ -1,5 +1,6 @@
 import * as React from 'react';
 import defaultAvatar from './asset/default-avatar.jpg';
+import * as css from './styles.css'
 
 interface IAvatarProps extends React.HTMLAttributes<HTMLSpanElement> {
   size?: number;
@@ -22,11 +23,11 @@ const Avatar: React.SFC<IAvatarProps> = ({
     height: size,
     borderRadius: `${radius}px`,
     background: `url(${src}) center / contain no-repeat`,
-  }
+  };
   
   return (
     <span
-      className={`${className}`}
+      className={`${css.demo} ${className}`}
       style={{ ...style, ...sty }}
       {...props}
     >
