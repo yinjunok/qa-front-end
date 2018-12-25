@@ -8,3 +8,4 @@ export { default as Switch } from './switch/Switch';
 export { default as Select } from './select/Select';
 export { default as RenderOuter } from './render-outer/RenderOuter';
 export { default as TabLink } from './tab-link/TabLink';
+export { default as Sex } from './sex/Sex';
