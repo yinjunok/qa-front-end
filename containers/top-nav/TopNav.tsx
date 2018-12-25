@@ -20,11 +20,13 @@ const data = [
 
 interface ITopNavProps {
   secondNav: React.ReactNode;
+  triggerHeight?: number;
 }
 
 class TopNav extends React.Component<ITopNavProps, {}> {
   static defaultProps = {
-    secondNav: null
+    secondNav: null,
+    triggerHeight: 0,
   }
 
   state = {
@@ -92,10 +94,16 @@ class TopNav extends React.Component<ITopNavProps, {}> {
 
   private preScrollTop: number = 0;
   private scrollHandler = () => {
+    const { triggerHeight } = this.props;
     const curScrollTop = document.documentElement.scrollTop;
 
-    // 当前高度比之前高, 那么是向下滚动, 展示第二导航
-    if (curScrollTop > this.preScrollTop) {
+    // 当前高度比之前高, 那么是向下滚动, 
+    // 并且当滚动的高度大于触发的高度
+    // 展示第二导航
+    if (
+      curScrollTop > this.preScrollTop &&
+      curScrollTop >= (triggerHeight as number)
+    ) {
       this.setState({
         showSecondNav: true
       });

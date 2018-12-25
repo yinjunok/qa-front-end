@@ -1,0 +1,1 @@
+export default () => (<span>动态</span>);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MdPhotoCamera, MdAdd, MdExpandLess } from 'react-icons/md';
-import { Card, Button, Avatar, Sex } from '../../components';
+import { Card, Button, Avatar } from '../../components';
 import * as css from './styles.less';
 
 class ProfileCard extends React.Component {
