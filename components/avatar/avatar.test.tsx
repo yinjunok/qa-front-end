@@ -4,8 +4,8 @@ import { shallow } from 'enzyme';
 
 import Avatar from './Avatar';
 
-describe('NiceCheckbox', () => {
-    it('renders the checkbox with correct label', () => {
+describe('test avatar', () => {
+    it('test avatar', () => {
         const src = 'www.google.com';
         const cb = jest.fn();
         const wrapper = shallow(<Avatar onClick={cb} className="icon" src={src} />);

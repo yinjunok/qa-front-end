@@ -3,7 +3,7 @@
 exports[`sex test 1`] = `
 <svg
   aria-hidden="true"
-  className="undefined "
+  className="icon "
   fill="currentColor"
   height="16"
   stroke="currentColor"
@@ -28,7 +28,7 @@ exports[`sex test 1`] = `
 exports[`sex test 2`] = `
 <svg
   aria-hidden="true"
-  className="undefined "
+  className="icon "
   fill="currentColor"
   height="16"
   stroke="currentColor"
@@ -53,7 +53,7 @@ exports[`sex test 2`] = `
 exports[`sex test 3`] = `
 <svg
   aria-hidden="true"
-  className="undefined "
+  className="icon "
   fill="currentColor"
   height="16"
   stroke="currentColor"

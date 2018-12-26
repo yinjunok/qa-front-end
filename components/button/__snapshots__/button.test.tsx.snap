@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`extra className 1`] = `
+<button
+  className="button vote "
+>
+  按钮
+</button>
+`;
+
+exports[`test snapshots blue button 1`] = `
+<button
+  className="button blue "
+>
+  按钮
+</button>
+`;
+
+exports[`test snapshots grey button 1`] = `
+<button
+  className="button grey "
+>
+  按钮
+</button>
+`;
+
+exports[`test snapshots primary button 1`] = `
+<button
+  className="button primary "
+>
+  按钮
+</button>
+`;
+
+exports[`test snapshots vote button 1`] = `
+<button
+  className="button vote "
+>
+  按钮
+</button>
+`;

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot no rightIcon 1`] = `
+<div
+  className="inputWrapper "
+>
+  <input
+    className="input"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  />
+</div>
+`;
+
+exports[`snapshot right Icon 1`] = `
+<div
+  className="inputWrapper "
+>
+  <input
+    className="input"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  />
+  <button>
+    按钮
+  </button>
+</div>
+`;
+
+exports[`snapshot with className 1`] = `
+<div
+  className="inputWrapper "
+>
+  <input
+    className="input"
+    onBlur={[Function]}
+    onFocus={[Function]}
+  />
+</div>
+`;
