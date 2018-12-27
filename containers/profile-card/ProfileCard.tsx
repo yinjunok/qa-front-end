@@ -1,29 +1,21 @@
 import * as React from 'react';
-import { MdPhotoCamera, MdAdd, MdExpandLess } from 'react-icons/md';
-import { Card, Button, Avatar } from '../../components';
+import {  MdAdd, MdExpandLess } from 'react-icons/md';
+import { Card, Button } from '../../components';
+import EditAvatar from '../edit-avatar/EditAvatar';
+import Cover from '../cover/Cover';
 import * as css from './styles.less';
 
 class ProfileCard extends React.Component {
   render() {
     return (
       <Card className={css.profileCard}>
-        <div className={css.cover}>
-          <Button type='grey' className={css.editCover}>
-            <MdPhotoCamera size={18} style={{ marginRight: 5 }} />
-            编辑封面图片
-          </Button>
-        </div>
-        <div className={css.userData}>
-          <div className={css.avatar}>
-            <Avatar size={160} radius={8} />
-            <div className={css.editAvatar}>
-              <div className={css.editIcon}>
-                <MdPhotoCamera color='#fff' size={35} />
-                修改我的头像
-              </div>
-            </div>
-          </div>
+      
+        <Cover />
 
+        <div className={css.userData}>
+          <div style={{ marginTop: '-84px' }}>
+            <EditAvatar />
+          </div>
           <div className={css.introWrapper}>
             <div className={css.userText}>
               <h1 className={css.username}>Cat Chen</h1>
