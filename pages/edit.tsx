@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link'
-import { TopNav, EditAvatar, Cover } from '../containers';
+import { TopNav, EditAvatar, Cover, EditPageForm } from '../containers';
 import * as css from '../styles/edit-page.less';
 
 class Edit extends React.Component {
@@ -23,6 +23,8 @@ class Edit extends React.Component {
                   <a>返回我的主页 ></a>
                 </Link>
               </div>
+            
+              <EditPageForm field='1' hint={() => (<div>1</div>)} editCom={() => (<div>1</div>)} />
             </div>
           </div>
         </div>
