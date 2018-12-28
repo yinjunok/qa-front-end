@@ -3,9 +3,8 @@ import * as css from './styles.less';
 
 interface IEditPageForm {
   field: string;
-  // hint: React.ComponentType<{ showEdit: Function }>;
-  hint:  React.SFC<{ showEdit: Function }>;
-  editCom: React.ComponentType<{ hiddenEdit: Function }>; // (hiddenEdit: Function) => JSX.Element;
+  hint: any; // React.ReactNode;
+  editCom: React.ComponentType<{ hiddenEdit: Function }>;
 }
 
 // 切换显隐状态的方法
@@ -29,18 +28,20 @@ class EditPageForm extends React.Component<IEditPageForm, {}> {
 
   render() {
     const { showEdit } = this.state;
-    const { field, hint: Hint, editCom: Edit } = this.props;
+    const { field, hint, editCom: Edit } = this.props;
 
     return (
       <div className={css.wrapper}>
         <p className={css.field}>
           {field}
         </p>
-        <div>
+        <div className={css.editArea}>
           {
             showEdit
             ? <Edit hiddenEdit={this.hiddenEdit} />
-            : <div onClick={this.showEdit}>{Hint}</div>
+            : <p className={css.hint} onClick={this.showEdit}>
+                {hint}
+              </p>
           }
         </div>
       </div>
