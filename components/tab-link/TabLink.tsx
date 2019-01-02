@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Link from 'next/link'
-import { withRouter, WithRouterProps, SingletonRouter } from 'next/router'
+import Link from 'next/link';
+import { withRouter, WithRouterProps, SingletonRouter } from 'next/router';
 import * as css from './styles.less';
 
 interface ITabLinkProps extends WithRouterProps {
