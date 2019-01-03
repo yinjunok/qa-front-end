@@ -8,9 +8,11 @@ import {
 } from 'next/router';
 import { List, Card } from '../../components';
 import { TopNav } from '../../containers';
+import Section from './Section';
+import EditButton from './EditButton';
 import * as css from './styles.less';
 
-class SettingLayout extends React.Component<WithRouterProps, {}> {
+class Setting extends React.Component<WithRouterProps, {}> {
   render() {
     return (
       <div>
@@ -60,4 +62,9 @@ class SettingLayout extends React.Component<WithRouterProps, {}> {
   }
 }
 
-export default withRouter(SettingLayout);
+const SettingLayout: any = withRouter(Setting);
+
+SettingLayout.EditButton = EditButton;
+SettingLayout.Section = Section;
+
+export default SettingLayout;

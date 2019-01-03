@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SettingLayout } from '../../layout';
 import * as css from '../../styles/setting-page.less';
 
-const Section: React.SFC = (props) => <section className={css.section}>{props.children}</section>
+const { Section, EditButton } = SettingLayout;
 
 class Setting extends React.Component {
   render() {
@@ -18,10 +18,37 @@ class Setting extends React.Component {
             绑定手机和邮箱，并设置密码，帐号更安全 <br/>
             注意：为保证帐号安全，需进行二次验证
           </span>
+
+          <div className={css.form}>
+            <Section>
+              <div className={css.editItem}>
+                <div>
+                  <p className={css.fieldTitle}>密码</p>
+                  <span className={css.desc}>
+                    已设置
+                  </span>
+                </div>
+                <EditButton />
+              </div>
+            </Section>
+
+            <Section>
+              <div className={css.editItem}>
+                <div>
+                  <p className={css.fieldTitle}>绑定邮箱</p>
+                  <span className={css.desc}>
+                    ***@gmail.com
+                  </span>
+                </div>
+                <EditButton />
+              </div>
+            </Section>
+          </div>
         </Section>
       </SettingLayout>
     );
   }
 }
+
 
 export default Setting;

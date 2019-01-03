@@ -3,7 +3,7 @@ import CardHeader, { CardHeaderProps } from './CardHeader';
 import CardSection from './CardSection';
 import * as css from './styles.less';
 
-interface ICardProps extends React.SFC<React.HTMLAttributes<HTMLDivElement>> {
+interface ICardProps extends React.FunctionComponent<React.HTMLAttributes<HTMLDivElement>> {
   CardHeader: CardHeaderProps;
   CardSection: React.SFC;
 }
