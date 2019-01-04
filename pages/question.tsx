@@ -1,9 +1,10 @@
 import * as React from 'react';
+import { QuestionLayout } from '../layout';
 
 class Question extends React.Component {
   render() {
     return (
-      <div>1</div>
+      <QuestionLayout />
     );
   }
 }
