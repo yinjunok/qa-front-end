@@ -9,12 +9,18 @@ interface IQuestionLayoutProps {
 
 class QuestionLayout extends React.Component<IQuestionLayoutProps, {}> {
   render() {
+    const { answers,about } = this.props;
+
     return(
       <>
         <QuestionDetails />
         <div className={css.answerArea}>
-          <div className={css.answers}></div>
-          <div className={css.about}></div>
+          <div className={css.answers}>
+            {answers}
+          </div>
+          <div className={css.about}>
+            {about}
+          </div>
         </div>
       </>
     )

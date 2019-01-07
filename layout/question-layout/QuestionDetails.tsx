@@ -2,14 +2,32 @@ import * as React from 'react';
 import ActionBar from './ActionBar';
 import { Tag } from '../../components';
 import { TopNav } from '../../containers';
+import SecondNav from './SecondNav';
 import * as css from './styles.less';
 
 class QuestionDetails extends React.Component {
+  detailsRef = React.createRef<HTMLDivElement>();
+
+  state = {
+    triggerHeight: 0, // secondNav 触发高度
+  }
+
+  componentDidMount() {
+    const { current } = this.detailsRef;
+    if (current !== null) {
+      this.setState({
+        triggerHeight: current.scrollHeight
+      });
+    }
+  }
+
   render() {
+    const { triggerHeight } = this.state;
+
     return(
       <>
-        <TopNav />
-        <div className={css.descWrapper}>
+        <TopNav triggerHeight={triggerHeight} secondNav={<SecondNav />} />
+        <div className={css.descWrapper} ref={this.detailsRef}>
           <div className={css.desc}>
             <div className={css.main}>
               <div className={css.topics}>
