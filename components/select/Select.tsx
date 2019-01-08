@@ -53,9 +53,9 @@ export default class Select extends React.Component<ISelectProps, {}> {
             }
           </p>
         </List>
-        {
-          showOptions && 
-            <RenderOuter>
+        <RenderOuter>
+          {
+            showOptions && 
               <Card className={css.optionsPanel} style={{ left: optionsPanel.left, top: optionsPanel.top }}>
                 {
                   (options as IOption[]).map((option: IOption) => (
@@ -69,8 +69,8 @@ export default class Select extends React.Component<ISelectProps, {}> {
                   )
                 }
               </Card>
-            </RenderOuter>
-        }
+          }
+        </RenderOuter>
       </div>
     );
   }

@@ -1,22 +1,30 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+// https://github.com/zeit/next.js/issues/2177#issuecomment-357450558
+const isBrowser = typeof window !== 'undefined';
+
 class RenderOuter extends React.Component {  
-  private outer: HTMLDivElement;
+  public outer: HTMLDivElement | undefined;
   constructor(props: any) {
     super(props);
-    this.outer = document.createElement('div');
+    if (isBrowser) {
+      this.outer = document.createElement('div');
+    }
   }
   componentDidMount() {
-    document.body.appendChild(this.outer);
+    document.body.appendChild(this.outer as HTMLDivElement);
   }
 
   componentWillUnmount() {
-    document.body.removeChild(this.outer);
+    document.body.removeChild(this.outer as HTMLDivElement);
   }
 
   render() {
-    return ReactDOM.createPortal(this.props.children, this.outer)
+    if (isBrowser) {
+      return ReactDOM.createPortal(this.props.children, this.outer as HTMLDivElement);
+    }
+    return null;
   }
 }
 
