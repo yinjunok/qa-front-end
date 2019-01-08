@@ -5,3 +5,4 @@ export { default as ProfileCard } from './profile-card/ProfileCard';
 export { default as EditAvatar } from './edit-avatar/EditAvatar';
 export { default as Cover } from './cover/Cover';
 export { default as EditPageForm } from './edit-page-form/EditPageForm';
+export { default as Editor } from './editor/Editor';

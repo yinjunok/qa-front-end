@@ -1,3 +1,4 @@
+const path = require('path');
 const withLess = require('@zeit/next-less');
 const withTypescript = require('@zeit/next-typescript');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
@@ -22,6 +23,10 @@ module.exports = withTypescript(withLess({
               }
             }
           ]
+        },{
+          test: /\.css$/,
+          loader: 'css-loader',
+          include: path.resolve(__dirname, './node_modules/braft-editor/dist/index.css'), 
         }
       );
     return config
