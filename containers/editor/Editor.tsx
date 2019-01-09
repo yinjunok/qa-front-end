@@ -32,8 +32,12 @@ class Editor extends React.Component {
   render() {
     return (
       <Card className={css.container}>
-        <CardHeader style={{ borderBottomColor: '#EBEBEB' }}>
-          <Avatar />
+        <CardHeader>
+          <div className={css.avatar}>
+            <Avatar size={38} />
+            <p className={css.name}>碉堡的id</p>
+          </div>
+          <button className={css.anonymous}>使用匿名身份回答</button>
         </CardHeader>
         <BraftEditor controls={controls} />
         <div className={css.buttonGroup}>
