@@ -1,34 +1,47 @@
 import * as React from "react";
-import BraftEditor from "braft-editor";
-import "braft-editor/dist/index.css";
+import dynamic from 'next/dynamic';
+import { BuiltInControlType, BraftEditorProps } from 'braft-editor';
+import { Card, Avatar, Button } from '../../components';
+import * as css from './styles.less';
 
-const isBrowser = typeof window !== 'undefined';
+const { CardHeader } = Card;
+
+const BraftEditor: React.ComponentType<BraftEditorProps> = dynamic(import('braft-editor') as any, {
+  ssr: false
+});
+
+const controls: BuiltInControlType[] = [
+  'headings',
+  'bold',
+  'italic',
+  'list-ol',
+  'list-ul',
+  'hr',
+  'separator',
+  'blockquote',
+  'code',
+  'media',
+  'separator',
+  'link',
+  'separator',
+  'remove-styles',
+  'fullscreen',
+];
 
 class Editor extends React.Component {
-  state = {
-    // 创建一个空的editorState作为初始值
-    editorState: BraftEditor.createEditorState(null)
-  };
-
-  handleEditorChange = (editorState: any) => {
-    this.setState({ editorState });
-  };
-  
   render() {
-    const { editorState } = this.state;
-
-    if (isBrowser) {
-      return (
-        <div className="my-component">
-          <BraftEditor
-            value={editorState}
-            onChange={this.handleEditorChange}
-          />
+    return (
+      <Card className={css.container}>
+        <CardHeader style={{ borderBottomColor: '#EBEBEB' }}>
+          <Avatar />
+        </CardHeader>
+        <BraftEditor controls={controls} />
+        <div className={css.buttonGroup}>
+          <Button type='grey'>存草稿</Button>
+          <Button style={{ marginLeft: 10 }}>提交回答</Button>
         </div>
-      );
-    }
-
-    return null;
+      </Card>
+    );
   }
 }
 

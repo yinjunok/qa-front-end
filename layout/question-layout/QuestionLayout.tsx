@@ -1,4 +1,7 @@
 import * as React from 'react';
+// import NoSsr from '@material-ui/core/NoSsr';
+// import "/node_modules/braft-editor/dist/index.css";
+import 'braft-editor/dist/index.css';
 import QuestionDetails from './QuestionDetails';
 import { Editor } from '../../containers';
 import * as css from './styles.less';
@@ -17,7 +20,9 @@ class QuestionLayout extends React.Component<IQuestionLayoutProps, {}> {
         <QuestionDetails />
         <div className={css.answerArea}>
           <div className={css.answers}>
-            <Editor />
+            <div className={css.editAnswer}>
+              <Editor />
+            </div>
             {answers}
           </div>
           <div className={css.about}>

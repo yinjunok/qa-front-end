@@ -23,10 +23,13 @@ module.exports = withTypescript(withLess({
               }
             }
           ]
-        },{
+        },
+        {
           test: /\.css$/,
+          // use: ['style-loader', 'css-loader'],
           loader: 'css-loader',
           include: path.resolve(__dirname, './node_modules/braft-editor/dist/index.css'), 
+          // include: path.resolve(__dirname, './containers/editor/styles.css'),
         }
       );
     return config
