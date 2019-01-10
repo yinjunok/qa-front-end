@@ -1,8 +1,17 @@
 import * as React from 'react';
 import * as css from './styles.less';
 
-const CardSection: React.FunctionComponent = props => (
-  <div className={css.CardSection}>{props.children}</div>
+type CardSectionProps = React.FunctionComponent<React.HTMLAttributes<HTMLDivElement>>;
+
+const CardSection: CardSectionProps = ({ children, className, ...props}) => (
+  <div className={`${css.CardSection} ${className}`} {...props}>
+    {children}
+  </div>
 );
+
+CardSection.defaultProps = {
+  className: '',
+  children: null,
+}
 
 export default CardSection;

@@ -1,0 +1,71 @@
+.main {
+  width: 1000px;
+  margin: 62px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.left {
+  width: 694px;
+}
+
+.right { 
+  width: 296px;
+}
+
+/**************** Tab *****************/
+
+.tab {
+  display: flex;
+  align-items: center;
+  background: #fff;
+}
+
+.link {
+  padding: 0 20px;
+  font-size: 16px;
+  text-align: center;
+
+  span {
+    position: relative;
+    display: block;
+    padding: 15px 0;
+    color: #444444;
+    cursor: pointer;
+
+    &.active::after {
+      position: absolute;
+      right: 0;
+      bottom: -1px;
+      left: 0;
+      height: 3px;
+      background: #0084FF;
+      content: '';
+    }
+  }
+}
+
+/******************** hot collection ********************/
+
+.replace {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #444;
+
+  &:hover {
+    opacity: .5;
+  }
+}
+
+.collItem {
+  margin-top: -1px;
+  border-top: 1px solid #f6f6f6;
+}
+
+.collMeta {
+  color: #999;
+  font-size: 14px;
+  margin-top: 5px;
+}

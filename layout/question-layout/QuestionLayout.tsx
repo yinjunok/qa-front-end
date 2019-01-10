@@ -1,6 +1,4 @@
 import * as React from 'react';
-// import NoSsr from '@material-ui/core/NoSsr';
-// import "/node_modules/braft-editor/dist/index.css";
 import 'braft-editor/dist/index.css';
 import QuestionDetails from './QuestionDetails';
 import { Editor } from '../../containers';

@@ -3,10 +3,15 @@ import * as css from './styles.less';
 
 export type CardHeaderProps = React.FunctionComponent<React.HTMLAttributes<HTMLDivElement>>;
 
-const CardHeader: CardHeaderProps = ({ children, className, ...props}) => (
+const CardHeader: CardHeaderProps = ({ children, className, ...props }) => (
   <div className={`${css.CardHeader} ${className}`} {...props}>
     {children}
   </div>
-)
+);
+
+CardHeader.defaultProps = {
+  className: '',
+  children: null,
+}
 
 export default CardHeader;
