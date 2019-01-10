@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as css from './styles.less';
 
-type CardSectionProps = React.FunctionComponent<React.HTMLAttributes<HTMLDivElement>>;
+export type CardSectionProps = React.FunctionComponent<React.HTMLAttributes<HTMLDivElement>>;
 
 const CardSection: CardSectionProps = ({ children, className, ...props}) => (
   <div className={`${css.CardSection} ${className}`} {...props}>

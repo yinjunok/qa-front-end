@@ -37,7 +37,7 @@ class MonthlyHot extends React.Component {
               </CardHeader>
               <CardSection className={css.collItem}>
                 <Link href='/'>
-                  <a>也许是有用的</a>
+                  <a className={css.collLink}>也许是有用的</a>
                 </Link>
                 <p className={css.collMeta}>
                   <span>100人关注</span>
@@ -47,7 +47,7 @@ class MonthlyHot extends React.Component {
               </CardSection>
               <CardSection className={css.collItem}>
                 <Link href='/'>
-                  <a>也许是有用的</a>
+                  <a className={css.collLink}>也许是有用的</a>
                 </Link>
                 <p className={css.collMeta}>
                   <span>100人关注</span>

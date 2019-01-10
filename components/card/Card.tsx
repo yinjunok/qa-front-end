@@ -1,11 +1,11 @@
 import * as React from 'react';
 import CardHeader, { CardHeaderProps } from './CardHeader';
-import CardSection from './CardSection';
+import CardSection, { CardSectionProps } from './CardSection';
 import * as css from './styles.less';
 
 interface ICardProps extends React.FunctionComponent<React.HTMLAttributes<HTMLDivElement>> {
   CardHeader: CardHeaderProps;
-  CardSection: React.SFC;
+  CardSection: CardSectionProps;
 }
 
 const Card: ICardProps = ({ className, children, ...props }) => (
