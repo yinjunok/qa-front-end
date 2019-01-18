@@ -27,6 +27,16 @@ const controls: BuiltInControlType[] = [
   'fullscreen',
 ];
 
+const isBrowser = typeof window !== 'undefined';
+
+// <link rel="stylesheet" href="/static/braft-editor/braft-editor.css" /> 
+if (isBrowser) {
+  const linkEle = document.createElement('link');
+  linkEle.rel = 'stylesheet';
+  linkEle.href = '/static/braft-editor/braft-editor.css';
+  document.head.appendChild(linkEle);
+}
+
 class Editor extends React.Component {
   state = {
     anonymous: false,
