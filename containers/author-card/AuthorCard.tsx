@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, Button, Avatar } from '../../components';
+import { Card, Avatar } from '../../components';
 
 const { CardHeader, CardSection } = Card;
 

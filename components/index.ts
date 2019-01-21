@@ -10,3 +10,4 @@ export { default as RenderOuter } from './render-outer/RenderOuter';
 export { default as TabLink } from './tab-link/TabLink';
 export { default as Sex } from './sex/Sex';
 export { default as Tag } from './tag/Tag';
+export { default as ScrollToTop } from './scroll-to-top/ScrollToTop';
