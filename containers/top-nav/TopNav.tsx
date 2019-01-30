@@ -1,22 +1,11 @@
 import * as React from 'react';
 import Link from 'next/link';
-import { MdForum } from "react-icons/md";
 
-import { Logo, Avatar, Switch, Select } from '../../components';
-import { debounce } from '../../utils';
 import { SearchBox } from '../index'
+import { debounce } from '../../utils';
+import { Logo, Avatar } from '../../components';
+import Notifications from '../notifications/Notifications';
 import * as css from './styles.less';
-
-const data = [
-  {
-    value: 1,
-    label: '中文',
-  },
-  {
-    value: 2,
-    label: 'English',
-  }
-];
 
 interface ITopNavProps {
   secondNav: React.ReactNode;
@@ -30,8 +19,6 @@ class TopNav extends React.Component<ITopNavProps, {}> {
   }
 
   state = {
-    checked: true,
-    selected: 1,
     showSecondNav: false, // 是否向上滚动
   }
 
@@ -71,12 +58,8 @@ class TopNav extends React.Component<ITopNavProps, {}> {
               <SearchBox />
             </div>
             <div className={css.innerItem}>
-              <MdForum size={24} className={`${css.forumIcon} ${css.functionIcon}`} />
-              <div className={css.functionIcon}>
-                <Switch checked={this.state.checked} onChange={this.changeHandler} />
-              </div>
-              <div className={css.functionIcon}>
-                <Select options={data} value={this.state.selected} onChange={(val) => { this.setState({selected: val}) }} />
+              <div style={{ marginRight: 20, paddingTop: 2 }}>
+                <Notifications />
               </div>
               <Avatar />
             </div>
@@ -113,12 +96,6 @@ class TopNav extends React.Component<ITopNavProps, {}> {
       });
     }
     this.preScrollTop = curScrollTop;
-  }
-
-  private changeHandler = () => {
-    this.setState({
-      checked: !this.state.checked,
-    });
   }
 };
 

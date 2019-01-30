@@ -1,0 +1,75 @@
+.iconWrapper {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.notificationCount {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  padding: 0 4px;
+  font-size: 11px;
+  color: #FFFFFF;
+  background-color: #F1403C;
+  border: 2px solid #FFFFFF;
+  border-radius: 20px;
+}
+
+.forumIcon {
+  color: #8590A6;
+}
+
+/*********************** Panel **********************/
+
+.container {
+  position: fixed;
+  width: 360px;
+  background: #FFFFFF;
+  border: 1px solid #EBEBEB;
+  border-radius: 4px;
+  box-shadow: 0 5px 20px rgba(26, 26, 26, 0.1);
+  z-index: 999;
+}
+
+.arrow {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  overflow: hidden;
+  pointer-events: none;
+  width: 32px;
+  height: 16px;
+  transform: translate(-50%, -100%);
+
+  &::before {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    bottom: -8px;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px;
+    border: 1px solid #EBEBEB;
+    background: #FFFFFF;
+    transform: rotate(45deg);
+    pointer-events: auto;
+  }
+}
+
+.panelHeader {
+  display: flex;
+  height: 48px;
+  border-bottom: 1px solid #EBEBEB;
+}
+
+.panelList {
+  height: 350px;
+}
+
+.panelFooter {
+  display: flex;
+  height: 40px;
+  border-top: 1px solid #EBEBEB;
+}
