@@ -2,6 +2,12 @@
   position: relative;
   cursor: pointer;
   user-select: none;
+  border-radius: 2px;
+  transition: all .15s ease;
+
+  &.active {
+    background: #efefef;
+  }
 }
 
 .notificationCount {
@@ -61,7 +67,25 @@
 .panelHeader {
   display: flex;
   height: 48px;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #EBEBEB;
+}
+
+.tabButton {
+  display: flex;
+  justify-content: center;
+  align-self: stretch;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex: 1 1 auto;
+  font-size: 24px;
+  color: #8590A6;
+
+  &.active {
+    color: #0084FF;
+  }
 }
 
 .panelList {
@@ -70,6 +94,15 @@
 
 .panelFooter {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 40px;
+  padding: 0 16px;
   border-top: 1px solid #EBEBEB;
+}
+
+.footerLink {
+  color: #8590A6;
+  vertical-align: middle;
+  font-size: 14px;
 }

@@ -26,9 +26,14 @@ class Notifications extends React.Component {
 
   render() {
     const { showPanel, pos } = this.state;
+
     return (
       <>
-        <div className={css.iconWrapper} ref={this.iconWrapperRef} onClick={this.togglePanel}>
+        <div
+          ref={this.iconWrapperRef}
+          onClick={this.togglePanel}
+          className={`${css.iconWrapper} ${showPanel ? css.active : ''}`}
+        >
           <MdNotifications
             size={26}
             className={css.forumIcon}
@@ -54,6 +59,7 @@ class Notifications extends React.Component {
     });
   }
 
+  // 计算面板应该显示的位置
   private calcPos = () => {
     const { current } = this.iconWrapperRef;
     if (current !== null) {
@@ -72,6 +78,7 @@ class Notifications extends React.Component {
     }
   }
 
+  // 浏览器缩放视口时候重新计算面板坐标
   private resizeHandler = () => {
     if (this.state.showPanel === false) return;
 
