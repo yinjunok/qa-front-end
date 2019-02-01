@@ -1,8 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-// https://github.com/zeit/next.js/issues/2177#issuecomment-357450558
-const isBrowser = typeof window !== 'undefined';
+import { isBrowser } from '../../utils';
+import NoSsr from '../no-ssr/NoSsr';
 
 class RenderOuter extends React.Component {  
   public outer: HTMLDivElement | undefined;
@@ -21,10 +20,13 @@ class RenderOuter extends React.Component {
   }
 
   render() {
-    if (isBrowser) {
-      return ReactDOM.createPortal(this.props.children, this.outer as HTMLDivElement);
-    }
-    return null;
+    return (
+      <NoSsr>
+        {
+          ReactDOM.createPortal(this.props.children, this.outer as HTMLDivElement)
+        }
+      </NoSsr>
+    )
   }
 }
 

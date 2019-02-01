@@ -11,3 +11,5 @@ export { default as TabLink } from './tab-link/TabLink';
 export { default as Sex } from './sex/Sex';
 export { default as Tag } from './tag/Tag';
 export { default as ScrollToTop } from './scroll-to-top/ScrollToTop';
+export { default as Trigger } from './trigger/Trigger';
+export { default as NoSsr } from './no-ssr/NoSsr';
