@@ -101,11 +101,11 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
     }
   }
 
-  private timer: number | undefined = undefined;
+  private enterTimer: number | undefined = undefined;
   private mouseEnterHandler = () => {
-    clearTimeout(this.timer);
+    clearTimeout(this.enterTimer);
 
-    this.timer = setTimeout(() => {
+    this.enterTimer = setTimeout(() => {
       const { top, left } = this.calcPos();
 
       this.setState({
@@ -118,8 +118,9 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
     }, this.props.mouseEnterDelay);
   }
 
+  private leaveTimer: number | undefined = undefined;
   private mouseLeaveHandler = () => {
-    this.timer = setTimeout(() => {
+    this.leaveTimer = setTimeout(() => {
       this.setState({
         showPop: false,
       });
