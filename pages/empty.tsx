@@ -5,7 +5,7 @@ class Empty extends React.Component {
   render() {
     return (
       <Trigger popup={<p>Hello World</p>}>
-        <span style={{ position: 'fixed', top: 500 }}>123</span>
+        <span style={{ position: 'fixed', top: 200 }}>123</span>
       </Trigger>
     );
   }

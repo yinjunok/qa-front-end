@@ -79,11 +79,20 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
     const screenHeight = window.innerHeight;
     let top: number;
 
+    const { current } = this.popRef;
+    let popHeight: number = 0;
+    if (current !== null) {
+      current.style.display = 'block';
+      const popRect = (current as HTMLDivElement).getBoundingClientRect();
+      popHeight = popRect.height;
+      current.style.display = ''
+    }
+    
     // 根据上下空间, 让 pop 显示在上还是下面
     if ((screenHeight - rect.height - rect.top) > rect.top) {
       top = rect.height + rect.top;
     } else {
-      top = rect.top;
+      top = rect.top - popHeight;
     }
 
     return {
@@ -95,7 +104,7 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
   private timer: number | undefined = undefined;
   private mouseEnterHandler = () => {
     clearTimeout(this.timer);
-    
+
     this.timer = setTimeout(() => {
       const { top, left } = this.calcPos();
 
