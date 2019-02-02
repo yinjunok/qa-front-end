@@ -35,8 +35,6 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
 
   componentDidMount() {
     const root = this.getRoot();
-    // console.log(this.getRoot());
-    // console.log(this.popRef.current);
     (root as Element).addEventListener('mouseenter', this.mouseEnterHandler);
     (root as Element).addEventListener('mouseleave', this.mouseLeaveHandler);
   }
@@ -62,6 +60,8 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
               className={`${css.popup} ${showPop ? css.show : ''}`}
               style={pos}
               ref={this.popRef}
+              onMouseEnter={this.clearLeaveTimer}
+              onMouseLeave={this.mouseLeaveHandler}
             >
               {popup}
             </div>
@@ -88,7 +88,7 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
       current.style.display = ''
     }
     
-    // 根据上下空间, 让 pop 显示在上还是下面
+    // 根据上下空间, 判断 pop 显示在上还是下面
     if ((screenHeight - rect.height - rect.top) > rect.top) {
       top = rect.height + rect.top;
     } else {
@@ -125,6 +125,12 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
         showPop: false,
       });
     }, this.props.mouseLeaveDelay);
+  }
+
+  private clearLeaveTimer = () => {
+    setTimeout(() => {
+      clearTimeout(this.leaveTimer);
+    });
   }
 
   private getRoot = () => {
