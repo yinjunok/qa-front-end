@@ -8,6 +8,7 @@ interface ITriggerProps {
   mouseEnterDelay?: number; // 毫秒
   mouseLeaveDelay?: number; // 毫秒
   popup: React.ReactNode;
+  children: (ref: React.Ref<any>) => JSX.Element;
 }
 
 interface ITriggerState {
@@ -34,13 +35,14 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
   }
 
   componentDidMount() {
-    const root = this.getRoot();
-    (root as Element).addEventListener('mouseenter', this.mouseEnterHandler);
-    (root as Element).addEventListener('mouseleave', this.mouseLeaveHandler);
+    const child = this.getChild();
+    (child as Element).addEventListener('mouseenter', this.mouseEnterHandler);
+    (child as Element).addEventListener('mouseleave', this.mouseLeaveHandler);
   }
 
   componentWillUnmount() {
-
+    clearTimeout(this.enterTimer);
+    clearTimeout(this.leaveTimer);
   }
 
   render() {
@@ -53,7 +55,7 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
 
     return (
       <>
-        {children}
+        {children(this.childRef)}
         {
           <RenderOuter>
             <div
@@ -72,10 +74,11 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
   }
 
   private popRef = React.createRef<HTMLDivElement>();
+  private childRef = React.createRef<Element>();
 
   private calcPos = () => {
-    const root = this.getRoot();
-    const rect = (root as Element).getBoundingClientRect();
+    const child = this.getChild();
+    const rect = (child as Element).getBoundingClientRect();
     const screenHeight = window.innerHeight;
     let top: number;
 
@@ -133,8 +136,10 @@ class Trigger extends React.Component<ITriggerProps, ITriggerState> {
     });
   }
 
-  private getRoot = () => {
-    return findDOMNode(this);
+  private getChild = () => {
+    if (this.childRef.current !== null) {
+      return findDOMNode(this.childRef.current);
+    }
   }
 }
 

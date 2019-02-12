@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test ui snapshoot 1`] = `
+<span
+  className="tag "
+>
+  标签
+</span>
+`;
+
+exports[`test ui snapshoot 2`] = `
+<span
+  className="tag tag"
+>
+  标签
+</span>
+`;
