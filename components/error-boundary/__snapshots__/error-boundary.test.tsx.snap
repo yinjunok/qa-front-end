@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test snapshots custom error component 1`] = `
+<h1>
+  custom error component
+</h1>
+`;
+
+exports[`test snapshots has error 1`] = `null`;
+
+exports[`test snapshots normal 1`] = `
+<h1>
+  no error
+</h1>
+`;
