@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Trigger } from '../components';
-import { HoverCard } from '../containers';
+import { TopicHoverCard } from '../containers';
 
 class Empty extends React.Component<any, {}> {
   render() {
     return (
       <>
-        <Trigger popup={<HoverCard />}>
+        <Trigger popup={<TopicHoverCard />}>
           {
             (ref) => <span ref={ref}>user</span>
           }
