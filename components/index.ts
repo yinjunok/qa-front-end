@@ -13,3 +13,4 @@ export { default as Tag } from './tag/Tag';
 export { default as ScrollToTop } from './scroll-to-top/ScrollToTop';
 export { default as Trigger } from './trigger/Trigger';
 export { default as NoSsr } from './no-ssr/NoSsr';
+export { default as ErrorBoundary } from './error-boundary/ErrorBoundary';
